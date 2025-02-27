@@ -471,3 +471,4 @@ await revalidateWordPressData(["category-456"]);
 This system ensures your content stays fresh while maintaining optimal performance through intelligent caching.
 
 Built by [Bridger Tower](https://twitter.com/bridgertower) and [Cameron Youngblood](https://twitter.com/youngbloodcyb) at [9d8](https://9d8.dev)
+# headless-Nextjs
