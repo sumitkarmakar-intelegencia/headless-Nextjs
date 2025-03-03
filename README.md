@@ -2,4 +2,4 @@
 
 npm install --force
 change .env.local file to point to your wordpress local url
-then npm start
+then npm run dev
