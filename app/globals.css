@@ -95,4 +95,11 @@
     scrollbar-width: none;
     /* Firefox */
   }
+
+ 
+}
+
+.is-layout-flex {
+  display: flex;
+  gap: var(--wp--style--block-gap, 1.5rem); /* Default gap value */
 }

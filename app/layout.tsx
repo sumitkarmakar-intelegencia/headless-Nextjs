@@ -11,6 +11,12 @@ import { Section, Container } from "@/components/craft";
 import { Analytics } from "@vercel/analytics/react";
 import { siteConfig } from "@/site.config";
 
+import "@wordpress/block-library/build-style/style.css";
+import "@wordpress/block-library/build-style/theme.css";
+import "@wordpress/block-library/build-style/common.css";
+// import "@wordpress/block-library/build-style/editor.css";
+// import "@wordpress/block-library/build-style/editor-rtl.css";
+
 import Balancer from "react-wrap-balancer";
 import Logo from "@/public/logo.svg";
 import Image from "next/image";
@@ -21,6 +27,7 @@ import { cn } from "@/lib/utils";
 const font = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: 'swap'
 });
 
 export const metadata: Metadata = {

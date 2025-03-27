@@ -1,3 +1,4 @@
+
 import { getAllAuthors } from "@/lib/wordpress";
 import { Section, Container, Prose } from "@/components/craft";
 import { Metadata } from "next";
@@ -11,9 +12,18 @@ export const metadata: Metadata = {
     canonical: "/posts/authors",
   },
 };
-
+const baseUrl = process.env.WORDPRESS_URL;
 export default async function Page() {
   const authors = await getAllAuthors();
+
+  const response = await fetch(`${baseUrl}/wp-json/wp/v2/themes`, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Basic sumit.karmakar:g4KP8XymJjnud!5`,
+    },
+  });
+  const themes = await response.json();
+  console.log(themes);
 
   return (
     <Section>

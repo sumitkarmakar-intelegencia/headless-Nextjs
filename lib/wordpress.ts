@@ -13,9 +13,12 @@ import type {
   Author,
   FeaturedMedia,
 } from "./wordpress.d";
+import { CloudCog } from "lucide-react";
 
 // WordPress Config
 const baseUrl = process.env.WORDPRESS_URL;
+
+console.log("WORDPRESS_URL", baseUrl);
 
 if (!baseUrl) {
   throw new Error("WORDPRESS_URL environment variable is not defined");
@@ -38,7 +41,7 @@ function getUrl(path: string, query?: Record<string, any>) {
 const defaultFetchOptions: FetchOptions = {
   next: {
     tags: ["wordpress"],
-    revalidate: 3600, // Revalidate every hour by default
+    revalidate: 60, // Revalidate every hour by default
   },
 };
 
@@ -437,3 +440,4 @@ export async function revalidateWordPressData(tags: string[] = ["wordpress"]) {
 
 // Export error class for error handling
 export { WordPressAPIError };
+

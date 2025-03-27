@@ -14,7 +14,11 @@ import { siteConfig } from "@/site.config";
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 
+// import { Button } from "intele-wp-custom-blocks"
+
+
 import type { Metadata } from "next";
+import BlockGenerators from "@/components/blocks";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -31,6 +35,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
+
+  console.log("blocks inside posts", post)
 
   if (!post) {
     return {};
@@ -85,6 +91,9 @@ export default async function Page({
     year: "numeric",
   });
   const category = await getCategoryById(post.categories[0]);
+  const blockData = post['block_data']
+
+  console.log("data11 ---", blockData)
 
   return (
     <Section>
@@ -128,8 +137,17 @@ export default async function Page({
             </div>
           )}
         </Prose>
+        {/* <Button href={"#"}> testing...</Button> */}
+        <Article>
+          {blockData?.length && blockData?.map(block=> <BlockGenerators {...block}></BlockGenerators>)}
+        </Article>
 
-        <Article dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+        {/* <Article dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+         */}
+            {/* {blockData?.map(block => {
+              <BlockGenerators block={block} />
+            }
+          )} */}
       </Container>
     </Section>
   );
